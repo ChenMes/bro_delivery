@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Restaurant(models.Model):
     name = models.CharField(null=False, blank=False, max_length=20)
+    # todo change to CharField
     phone_number = models.IntegerField(null=False, blank=False)
     address = models.ForeignKey('Address', on_delete=models.RESTRICT)
     customers = models.ManyToManyField('Customer')
@@ -21,8 +22,10 @@ class Delivery(models.Model):
     price = models.FloatField(null=False, blank=False)
     address = models.ForeignKey('Address', on_delete=models.RESTRICT)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.RESTRICT)
+    # todo" deliveryGuy
     delivery_guys = models.ForeignKey('Delivery_guy', on_delete=models.RESTRICT)
     customer = models.ForeignKey('Customer', on_delete=models.RESTRICT)
+    # todo - delte Tips table, add tip + special commeent here
 
     class Meta:
         db_table = 'delivery'

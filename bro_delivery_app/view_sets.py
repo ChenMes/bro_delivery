@@ -49,6 +49,6 @@ class DeliveryViewSet(mixins.CreateModelMixin,
                       GenericViewSet):
     serializer_class = DeliverySerializer
     queryset = Delivery.objects.all
-    pagination_class = DeliveryPageClass
-    filterset_class = DeliveryFilterSet
-    permission_classes = [DeliveryPermission]
+    # pagination_class = DeliveryPageClass
+    # filterset_class = DeliveryFilterSet
+    # permission_classes = [DeliveryPermission]
