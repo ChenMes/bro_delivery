@@ -16,7 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenRefreshView
 
+from bro_delivery_app.view_sets import *
+
+router = DefaultRouter()
+router.register('api/deliveries', DeliveryViewSet)
+router.register('api/restaurants', RestaurantViewSet)
+router.register('api/customers', CustomerViewSet)
+router.register('api/users', RestaurantViewSet)
+router.register('api/addresses', AddressViewSet)
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
+    path('api/tokens', ExtendedTokenObtainPairView.as_view()),
+    path('api/tokens/refresh', TokenRefreshView.as_view()),
+    path('api/me', me),
+    path('api/google-auth', google_login),
+    path('api/addresses_street', get_address_delivery),
+    path('api/customers_phone', get_customer_phone),
+    path('api/delivery_guy', get_delivery_guy),
+    path('api/restaurant_deliveries', restaurant_deliveries),
+    path('api/delivery_guy_deliveries', delivery_guy_deliveries)
+    # path('profile/img', upload_profile_img),
+    # path('profile/img/presigned', upload_profile_img_url),
+    # path('profile/img/done', upload_profile_img_done),
 ]
+urlpatterns.extend(router.urls)
