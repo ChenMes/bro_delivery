@@ -3,7 +3,9 @@ psycopg2-binary
 djangorestframework~=3.14.0
 django-filter~=23.2
 djangorestframework-simplejwt
+django-countries
 django-cors-headers
 google-cloud-storage
 gunicorn
 requests
+google-auth
